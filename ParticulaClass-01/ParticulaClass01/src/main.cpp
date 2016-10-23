@@ -1,4 +1,4 @@
-//Master
+//copia 02-particulaClass01
 #include "ofMain.h"
 #include "ofApp.h"
 

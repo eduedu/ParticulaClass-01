@@ -1,4 +1,4 @@
-//PariculaClass01!!!!
+//copia 02-particulaClass01
 #pragma once
 
 #include "ofMain.h"
