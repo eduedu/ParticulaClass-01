@@ -1,4 +1,4 @@
-//copia 03b-particulaClass01
+//copia 04-particulaClass01
 
 #include "ofApp.h"
 
@@ -105,7 +105,8 @@ void ofApp::setup() {
 		}
 
 		tx[j] = deltaX + separacionX + ((tmpX)*separacionX);
-		ty[j] = deltaY + separacionY + ((tmpY + (cantidadX - tmpX))*separacionY);
+		ty[j] = deltaY + separacionY + ((tmpY + tmpX)*separacionY);
+		//ty[j] = deltaY + separacionY + ((tmpY + (cantidadX - tmpX))*separacionY);
 		if (tmpX >= cantidadX) {
 			tmpX = 0;
 			tmpY++;
@@ -318,7 +319,8 @@ void ofApp::draw() {
 		for (int k = j + 1; k < tmpGrupo1; k++) {
 			if (ofDist(p[j].x, p[j].y, p[k].x, p[k].y)
 				< dist) {
-				ofSetColor(58, 160, 62);
+				//ofSetColor(58, 160, 62);
+				ofSetColor(0, 200, 62);
 				ofLine(p[j], p[k]);
 			}
 		}
@@ -327,7 +329,8 @@ void ofApp::draw() {
 		for (int k = j + 1; k < (tmpGrupo1 + tmpGrupo2); k++) {
 			if (ofDist(p[j].x, p[j].y, p[k].x, p[k].y)
 				< dist) {
-				ofSetColor(43, 153, 211);
+				//ofSetColor(43, 153, 211);
+				ofSetColor(200, 53, 100);
 				ofLine(p[j], p[k]);
 			}
 		}
