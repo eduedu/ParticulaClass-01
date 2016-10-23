@@ -1,4 +1,4 @@
-//copia 02-particulaClass01
+//copia 03b-particulaClass01
 
 #include "ofApp.h"
 
