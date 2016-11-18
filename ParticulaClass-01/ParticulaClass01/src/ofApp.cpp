@@ -33,8 +33,8 @@ int mValorOSC1;
 void ofApp::setup() {
 	ofSetFrameRate(30);
 	//Set up sound sample
-	sound.loadSound("surface.wav");
-	sound.setLoop(true);
+	//sound.loadSound("surface.wav");
+	//sound.setLoop(true);
 	//sound.play();
 
 	//Set spectrum values to 0
@@ -69,6 +69,8 @@ void ofApp::setup() {
 	}
 	}
 	*/
+	//IPV///////////////////////////////////////////////////////////////////////////////////////
+	/*
 	int deltaX = 500;
 	int deltaY = 100;
 	int separacionX = 20;
@@ -105,13 +107,61 @@ void ofApp::setup() {
 		}
 
 		tx[j] = deltaX + separacionX + ((tmpX)*separacionX);
-		ty[j] = deltaY + separacionY + ((tmpY + tmpX)*separacionY);
-		//ty[j] = deltaY + separacionY + ((tmpY + (cantidadX - tmpX))*separacionY);
+		//ty[j] = deltaY + separacionY + ((tmpY + tmpX)*separacionY);
+		ty[j] = deltaY + separacionY + ((tmpY + (cantidadX - tmpX))*separacionY);
 		if (tmpX >= cantidadX) {
 			tmpX = 0;
 			tmpY++;
 		}
 	}
+	*/
+	//LUMINICA///////////////////////////////////////////////////////////////////////////////////////
+
+	int deltaX = 400;
+	int deltaY = 120;
+	int separacionX = 20;
+	int separacionY = 20;
+	int cantidadX = 5;
+	int cantidadY = 10;
+	int tmpX = 0;
+	int tmpY = 0;
+	tmpGrupo1 = (cantidadX*cantidadY);
+	for (int j = 0; j < tmpGrupo1; j++) {
+		if (tmpX < cantidadX) {
+			tmpX++;
+		}
+
+		//tx[j] = deltaX + separacionX + ((tmpX)*separacionX);
+		tx[j] = deltaX + separacionX + ((tmpX)*separacionX);
+		ty[j] = deltaY + separacionY + ((tmpY + tmpX*0)*separacionY);
+		if (tmpX >= cantidadX) {
+			tmpX = 0;
+			tmpY++;
+		}
+	}
+
+
+	cantidadX = 11;
+	cantidadY = 4;
+	tmpX = 0;
+	tmpY = 0;
+	deltaX = 400;
+	deltaY = 300;// deltaY + separacionY;
+	tmpGrupo2 = (cantidadX*cantidadY);
+	for (int j = tmpGrupo1; j < (tmpGrupo1 + tmpGrupo2); j++) {
+		if (tmpX < cantidadX) {
+			tmpX++;
+		}
+
+		tx[j] = deltaX + separacionX + ((tmpX)*separacionX);
+		//ty[j] = deltaY + separacionY + ((tmpY + tmpX)*separacionY);
+		ty[j] = deltaY + separacionY + ((tmpY + (cantidadX - tmpX)*0)*separacionY);
+		if (tmpX >= cantidadX) {
+			tmpX = 0;
+			tmpY++;
+		}
+	}
+
 
 	//OSC
 	receiver.setup(PORT);
@@ -314,13 +364,15 @@ void ofApp::draw() {
 		dist = ofMap(mValorOSC1, 0, 300, 0, 60);
 		dist = mValorOSC1;
 	}
-
+	//GRUPOS SEPARADOS
+	/*
 	for (int j = 0; j < tmpGrupo1; j++) {
 		for (int k = j + 1; k < tmpGrupo1; k++) {
 			if (ofDist(p[j].x, p[j].y, p[k].x, p[k].y)
 				< dist) {
 				//ofSetColor(58, 160, 62);
-				ofSetColor(0, 200, 62);
+				//ofSetColor(0, 200, 62);
+				ofSetColor(0, 255, 0);
 				ofLine(p[j], p[k]);
 			}
 		}
@@ -330,7 +382,21 @@ void ofApp::draw() {
 			if (ofDist(p[j].x, p[j].y, p[k].x, p[k].y)
 				< dist) {
 				//ofSetColor(43, 153, 211);
-				ofSetColor(200, 53, 100);
+				ofSetColor(0, 255, 0);
+				//ofSetColor(200, 53, 100);
+				ofLine(p[j], p[k]);
+			}
+		}
+	}
+	*/
+	//LOS 2 GRUPOS JUNTOS:
+	for (int j = 0; j < tmpGrupo1+tmpGrupo2; j++) {
+		for (int k = j + 1; k < tmpGrupo1 + tmpGrupo2; k++) {
+			if (ofDist(p[j].x, p[j].y, p[k].x, p[k].y)
+				< dist) {
+				//ofSetColor(58, 160, 62);
+				//ofSetColor(0, 200, 62);
+				ofSetColor(0, 255, 0);
 				ofLine(p[j], p[k]);
 			}
 		}
